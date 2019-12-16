@@ -1,31 +1,21 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
+    <head>
+        <!--=============== basic  ===============-->
+        <meta charset="UTF-8">
+        <title>Square Foot Exchange</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="robots" content="index, follow"/>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <!--=============== css  ===============-->	
+        <link type="text/css" rel="stylesheet" href="css/reset.css">
+        <link type="text/css" rel="stylesheet" href="css/plugins.css">
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <link type="text/css" rel="stylesheet" href="css/color.css">
+        <!--=============== favicons ===============-->
+        <link rel="shortcut icon" href="images/favicon.ico">
+    </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
@@ -39,5 +29,297 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="js/core.js"></script>
+	<div id="sectionScripts">
+		<script type="text/javascript" src="js/scripts.js"></script>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	
+	<script type="text/javascript">
+		var AppConfig;
+		var UserLoggedIn;
+		
+		$(document).keypress(function (e) {
+			//console.log('here pass keys press')
+			if (e.which == 13 && $("#frmLogin").length && !($(".swal2-container").length)) {
+				//console.log('here pass enter press')
+				e.preventDefault();
+				if ($("#frmLoginName").val()) {
+					if ($("#frmLoginPassword").val()) {
+						Login();
+					}
+					else {
+						$("#frmLoginPassword").focus();
+					}
+				}
+				else {
+					$("#frmLoginName").focus();
+				}
+			}
+		});
+		
+		var LastSlideHook = function(){
+			//alert('here')
+			console.log('here');
+		}
+		
+		var VideoClick = function(){
+			//alert('here')
+			$("#videoLink").click()
+		}
+		
+		var ModalLogin = function(reactComp, config){
+			//console.log('here modal called');
+			//console.log(reactComp);
+			
+			//reactComp.setState({Hello : 'Login'});
+			UserLoggedIn = reactComp;
+			AppConfig = config;
+			
+			let LoginHtml = `
+			<div class="container" style="background: white;padding: 20px;top: -200px;width:80%;">
+				<div class="split-sceen-content_title fl-wrap">
+					<div class="pr-bg pr-bg-white" style="left: 100%; transform: translate3d(0px, 0px, 0px);"></div>
+					<h3>Log In</h3>
+				</div>
+				<div id="">
+					<div class="pr-bg pr-bg-white" style="left: 100%; transform: translate3d(0px, 0px, 0px);"></div>
+					<form id="frmLogin" class="custom-form" action="javascript:void(-1)">
+						<input type="submit" style="display:none" />
+						<fieldset>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" name="name" id="frmLoginName" placeholder="Type Username or Email" value="" required />
+								</div>
+								<div class="col-md-12">
+									<input type="password" name="password" id="frmLoginPassword" placeholder="Password" value="" required />
+								</div>
+								<div class="col-md-12">
+								<button style="width:100%;" class="btn float-btn flat-btn color-bg" type="button" onclick="Login();">Login <i class="fal fa-long-arrow-right"></i></button>
+							</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			`;
+		
+			$('.lg-img-wrap').html(LoginHtml);
+			$("#frmLoginName").focus();
+		}
+		
+		var ModalSignUp = function(){
+			
+			let SignUpHtml = `
+			<div class="container" style="background: white;padding: 20px;top: -250px;width:80%;">
+				<div class="split-sceen-content_title fl-wrap">
+					<div class="pr-bg pr-bg-white" style="left: 100%; transform: translate3d(0px, 0px, 0px);"></div>
+					<h3>Register</h3>
+				</div>
+				<div id="">
+					<div class="pr-bg pr-bg-white" style="left: 100%; transform: translate3d(0px, 0px, 0px);"></div>
+					<form class="custom-form">
+						<fieldset>
+							<div class="row">
+								<div style="overflow-y:scroll; max-height:250px">
+								<div class="col-md-6">
+									<input type="text" name="fname" id="fname" placeholder="First Name" value="">
+								</div>
+								<div class="col-md-6">
+									<input type="text" name="lname" id="lname" placeholder="Last Name" value="">
+								</div>
+								<div class="col-md-6">
+									<input type="text" name="uname" id="uname" placeholder="Username" value="">
+								</div>
+								<div class="col-md-6">
+									<input type="email" name="email" id="email" placeholder="Email" value="">
+								</div>
+								<div class="col-md-6">
+									<input type="password" name="password" id="password" placeholder="Password" value="">
+								</div>
+								<div class="col-md-6">
+									<input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" value="">
+								</div>
+								</div>
+								<div class="col-md-12">
+								<button style="width:100%;" class="btn float-btn flat-btn color-bg" type="button" onclick="Register();">Register <i class="fal fa-long-arrow-right"></i></button>
+							</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			`;
+		
+			$('.lg-img-wrap').html(SignUpHtml);
+		}
+		
+		var Login = function(){
+			if ($('#frmLogin')[0].checkValidity()) {
+				Swal.fire(
+					{
+						titleText : "Please wait...",
+						allowOutsideClick : false,
+						allowEscapeKey : false,
+						onBeforeOpen: () => {
+							Swal.showLoading()
+						}
+					}
+				)
+				
+				let data = {
+					"grant_type": "password",
+					"username": $("#frmLoginName").val(),
+					"password": $("#frmLoginPassword").val(),
+					"scope": "USER"
+				}
+			
+				ServicesAuth(AppConfig.apiUrl, data).done(function(response){
+					Swal.hideLoading();
+					Swal.clickCancel();
+					
+					//console.log(response);
+					localStorage.setItem('UserToken',response.access_token+ AppConfig.obtknfs);
+					localStorage.setItem('User',JSON.stringify({ Username : response.Username }));
+					UserLoggedIn.setState({UserToken : localStorage.getItem('UserToken'), User : JSON.parse(localStorage.getItem('User'))});
+					
+					$('#menu').css('height','auto');
+					$('.lg-close').click();
+					
+				}).fail(function(jqXHR, textStatus, errorThrown) {
+					$("#frmLoginName").focus();
+					//console.log('Invalid username or password')
+					//console.log(jqXHR.status);
+					//console.log(textStatus);
+					//console.log(errorThrown);
+					if(jqXHR.status == 400){
+						Swal.fire(
+							'',
+							'Invalid username or password',
+							'error'
+						).then(function(data){
+							if(data.value && data.value== true){
+								$("#frmLoginName").val('')
+								$("#frmLoginPassword").val('')
+							}
+						})
+					}
+					else{
+						Swal.fire(
+							'',
+							'Error establishing connection with server',
+							'error'
+						).then(function(data){
+							if(data.value && data.value== true){
+								$("#frmLoginName").val('')
+								$("#frmLoginPassword").val('')
+							}
+						})
+					}
+				});
+				
+				
+			}
+			else {
+				$('#frmLogin').find(':submit').click();
+			}
+		}
+		
+		var Register = function(){
+			$('.lg-close').click();
+		}
+			
+		var InvestmentFilter = function(data, booldata){
+			if(booldata){
+				$('.pprojects').hide()
+				$('.'+data).show()
+			}
+			
+			if(data == 'pprojects'){
+				let imageURL = `images/bg/8.jpg`;
+				$('.investmentFixedColI').css('background-image', 'url('+imageURL+')');
+				let textP = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.`;
+				$('.investmentFixedColP').html(textP);
+				$('.investmentFixedColH').html('Investments')
+			}
+			else if(data == 'lprojects'){
+				let imageURL = `images/all/land.jpg`;
+				$('.investmentFixedColI').css('background-image', 'url('+imageURL+')');
+				let textP = `Land Projects allow you to invest and own land on a sharing basis. Offering both short and long term investments, land projects ill get you returns just as you like them!`;
+				$('.investmentFixedColP').html(textP);
+				$('.investmentFixedColH').html('Land Projects')
+			}
+			else if(data == 'dprojects'){
+				let imageURL = `images/all/develop.jpg`;
+				$('.investmentFixedColI').css('background-image', 'url('+imageURL+')');
+				let textP = `Development Projects give you an opportunity to safely invest in long term projects. Invest your money in development projects and let your money make an income`;
+				$('.investmentFixedColP').html(textP);
+				$('.investmentFixedColH').html('Development Projects')
+			}
+			else if(data == 'rprojects'){
+				let imageURL = `images/all/rental.jpg`;
+				$('.investmentFixedColI').css('background-image', 'url('+imageURL+')');
+				let textP = `Rental Projects will provide an opportunity for short-term investments to our investors. Investors with a limited budget will also be able to invest and profit from our rental projects`;
+				$('.investmentFixedColP').html(textP);
+				$('.investmentFixedColH').html('Rental Projects')
+			}
+			else{
+			}
+		}
+		
+		$(window).scroll(function(){
+			if($('.lprojects').length && $('.dprojects').length && $('.rprojects').length){
+				let UlimLprojects = $('.lprojects').offset().top + $('.dprojects').offset().top;
+				let UlimDprojects = $('.dprojects').offset().top + $('.rprojects').offset().top;
+				if($(this).scrollTop()>= 0 && $(this).scrollTop() <= 15){
+					InvestmentFilter('pprojects',false);
+				}
+				else if($(this).scrollTop() > 15 && $(this).scrollTop() < UlimLprojects){
+					InvestmentFilter('lprojects',false);
+				}
+				else if($(this).scrollTop() >= UlimLprojects && $(this).scrollTop() < UlimDprojects){
+					InvestmentFilter('dprojects',false);
+				}
+				else{
+					InvestmentFilter('rprojects',false);
+				}
+			}
+			
+		});
+		
+		var Services = function(Url, Method, Data){
+			let form = new FormData();
+			form.append("RequestData", Data);
+			form.append("RequestMethod", Method);
+
+			let settings = {
+				"url": Url+"api",
+				"method": "POST",
+				"processData": false,
+				"contentType": false,
+				"mimeType": "multipart/form-data",
+				"data": form
+			}
+
+			return $.ajax(settings);
+		}
+		
+		var ServicesAuth = function(Url, Data){
+			let settings = {
+				"url": Url+"token",
+				"method": "POST",
+				"headers": {
+					"content-type": "application/x-www-form-urlencoded"
+				},
+				"data": Data
+			}
+
+			return $.ajax(settings);
+		}
+		
+	</script>
+	
   </body>
 </html>
