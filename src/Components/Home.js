@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import SvgLogo from './SvgLogo';
 import SvgGraph from './SvgGraph';
+import '../../node_modules/react-vis/dist/style.css';
+import {XYPlot, LineSeries, XAxis,YAxis} from 'react-vis';
 
 class Home extends React.Component {
 	
@@ -14,6 +16,36 @@ class Home extends React.Component {
 	}
 	
   render() {
+    const data = [
+      {x: 2007, y: 19.465},
+      {x: 2008, y: 4.71},
+      {x: 2009, y: -3.923333333},
+      {x: 2010, y: 14.5425},
+      {x: 2011, y: 18.31},
+      {x: 2012, y: 12.1725},
+      {x: 2013, y: 20.835},
+      {x: 2014 , y: 14.12},
+      {x: 2015, y: 11.105},
+      {x: 2016, y: 8.54},
+      {x: 2017, y: 10.1575},
+      {x: 2018, y: -1.475},
+      {x: 2019, y: -0.38}
+    ];
+    const data2 = [
+      {x: 2007, y: 50.465},
+      {x: 2008, y: 42.71},
+      {x: 2009, y: -31.923333333},
+      {x: 2010, y: 1.5425},
+      {x: 2011, y: 1.31},
+      {x: 2012, y: 1.1725},
+      {x: 2013, y: 20.835},
+      {x: 2014 , y: 14.12},
+      {x: 2015, y: 11.105},
+      {x: 2016, y: 8.54},
+      {x: 2017, y: 10.1575},
+      {x: 2018, y: -1.475},
+      {x: 2019, y: -0.38}
+    ];
     return (
 		<div className="content full-height hidden-item home-half-slider">
 		<Helmet>
@@ -129,7 +161,15 @@ class Home extends React.Component {
                     {/* swiper-slide*/}
                     <div className="swiper-slide">
                       {/*<div className="bg" data-bg="images/bg/2.jpg" />*/}
-					  <SvgGraph />
+					  {/* <SvgGraph /> */}
+           <div style={{marginLeft:'220px'}}>
+            <XYPlot  height={500} width={700}>
+            <XAxis title="Year"  />
+           <YAxis title="Value" />
+              <LineSeries data={data} style={{strokeWidth: 3}} />
+              <LineSeries data={data2} style={{strokeWidth: 3}} />
+            </XYPlot>
+            </div>
                       {/* <div class="overlay"></div> */}
                     </div>
                     {/* swiper-slide end*/}                                        

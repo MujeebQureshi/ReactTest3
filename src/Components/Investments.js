@@ -50,16 +50,18 @@ class Investments extends React.Component {
         {/*column-wrap*/} 
         <div className="column-wrap">
           {/*filter-panel */} 
-          <div className="fixed-filter-panel top_fix-filter top-element in-filter_mobpanel">
+          <div className="fixed-filter-panel top_fix-filter top-element in-filter_mobpanel" style={{background:'#1B628E'}}>
             <div className="pr-bg" />
             <div className="fixed-filter-panel_title color-bg">
               Works Filter <i className="fal fa-long-arrow-right" />
             </div>
             <div className="gallery-filters">
-              <a href="#" onClick={()=>this.rInvestmentFilter('pprojects')} className="gallery-filter gallery-filter-active" data-filter="*">All Works</a>
-              <a href="#" onClick={()=>this.rInvestmentFilter('lprojects')} className="gallery-filter " data-filter=".land">Land</a>
+              
+              <a href="#" onClick={()=>this.rInvestmentFilter('lprojects')} className="gallery-filter  gallery-filter-active" data-filter=".land">Land</a>
               <a href="#" onClick={()=>this.rInvestmentFilter('dprojects')} className="gallery-filter" data-filter=".development">Development</a>
               <a href="#" onClick={()=>this.rInvestmentFilter('rprojects')} className="gallery-filter" data-filter=".rental">Rental</a>
+              <a href="#" onClick={()=>this.rInvestmentFilter('pprojects')} className="gallery-filter" data-filter="*">All Works</a>
+              
               {/* <a href="#" class="gallery-filter" data-filter=".design">Design</a> */}
             </div>
             {/*<div className="folio-counter">

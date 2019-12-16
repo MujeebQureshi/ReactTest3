@@ -1920,7 +1920,10 @@ section.hero-section .fs-canvas {
     transition: all 200ms ease-in-out;
 }
 .inline-filter-panel .gallery-filters a.gallery-filter-active:after {
+	
 	right:-20px;
+	color: #deac27;
+
 }
 .inline-filter-panel  .folio-counter {
 	position: absolute;
