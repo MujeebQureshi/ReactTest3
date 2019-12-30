@@ -6,6 +6,9 @@ import Investments from './Investments';
 import Services from './Services';
 import Contacts from './Contacts';
 import config from '../config.json';
+import Property from './Property';
+import Terms from './Terms';
+import ExitPlan from './ExitPlan';
 
 class Main extends React.Component {
 	constructor(){
@@ -72,10 +75,10 @@ class Main extends React.Component {
           {/* nav-button-wrap end*/}
           {/* sidebar-button end*/}  
           {/*  navigation */} 
-          <div className="header-contacts">
+          <div className="header-contacts" >
             <ul>
-              <li><span> Call </span> <a href="#">+X(XXX)XXXXXXXX</a></li>
-              <li><span> Write </span> <a href="#">info@your-domain.com</a></li>
+              <li><span style={{fontSize:12}}> Call </span> <a  style={{fontSize:12}} href="#">+X(XXX)XXXXXXXX</a></li>
+              <li><span style={{fontSize:12}}> Write </span> <a style={{fontSize:12}} href="#">info@your-domain.com</a></li>
             </ul>
           </div>
           {/* navigation  end */}            
@@ -117,9 +120,13 @@ class Main extends React.Component {
                       <a href="/investments">Investments</a>
                     </li>
                     <li><a href="/contacts" className="">Contacts</a></li>
-					<li><a href="/services" className="">FAQs</a></li>
-                    <li><a href="blog.html" className="">Blog</a></li>
-					
+					          <li>
+                        <a href="/services" className="">FAQs</a></li>
+                    <li>
+                      <a href="blog.html" className="">Blog</a></li>
+                    <li>
+                      <a href="/exitplan">Exit Plan</a>
+                    </li>
 					{(this.state.UserToken)?<li className="borderbottom"><a href="#" className="" onClick={this.rLogout}>Logout</a></li>:<span></span>}
                   </ul>
                 </nav>
@@ -154,6 +161,10 @@ class Main extends React.Component {
 			  <Route exact path='/services' component={Services} />
 			  <Route exact path='/contacts' component={Contacts} />
 			  <Route exact path='/notfound' component={NotFound} />
+        <Route exact path='/property' component={Property} />
+        <Route exact path='/terms' component={Terms} />
+        <Route exact path='/exitplan' component={ExitPlan} />
+                    
 			  <Route render={() => <Redirect to="/notfound" />} />
 			</Switch>
             {/* content  end */}  

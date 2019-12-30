@@ -1,18 +1,56 @@
 import React from 'react';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
+import config from '../config.json';
 
 class Investments extends React.Component {
-	componentDidMount () {
+  constructor(){
+    super();
+    this.state={
+      propertyList: []
+    }
+  }
 
+  componentDidMount () {
+    console.log("did mount")
+    //this.setState({propertyList:this.rloadProperty(this)})
+    var res=this.rloadProperty(this)
+    console.log("res did mount: "+this.rloadProperty(this))
+    //console.log("prop from did mount:"+ this.state.propertyList)
 	}
-	
+ 
+    rloadProperty=(comp)=>{
+      console.log("LOAD PROPERTY :")
+      var AppConfig=config;
+      console.log(AppConfig)
+      var myres=""
+      var data="{PropertyID: 101}"
+      var  Method="PropertyModuleEP.GetTop4"
+      window.Services(AppConfig.apiUrl,Method, data).done( (response)=>{
+        
+        console.log("res:" +(response));
+         myres=JSON.parse(response);
+       // response.tryGetValue("ResponseResult", out myres);
+        console.log("result: "+myres.ResponseResult[0].PropertyID)
+      // return myres.ResponseResult[0].PropertyID
+        // comp.setState({propertyList:myres});
+        //console.log("Propertylist state:"+this.state.propertyList)
+      })
+
+      console.log("prop from load:"+ myres.ResponseResult)
+      return myres.ResponseResult
+
+    }  
+    
 	rInvestmentFilter(data){
 		window.InvestmentFilter(data,true)
 	}
 	
   render() {
+    console.log("render");
     return (
+      
+      
 	  <div>
 		<Helmet>
           <title>SQFTX - Investments</title>
@@ -28,7 +66,7 @@ class Investments extends React.Component {
               <div className="snw-dec">
                 <div className="mousey">
                   <div className="scroller" />
-                </div>
+                </div>  
               </div>
             </div>
             <div className="bg investmentFixedColI" data-bg="images/bg/8.jpg" />
@@ -79,14 +117,35 @@ class Investments extends React.Component {
                 {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
                 <div className="grid-item-holder">
                   <img src="images/folio/4.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
+                 
+                  <div className="grid-det" >
+                  <a className="a1" href='/property'>   
+                    <div className="grid-det_category">
+                      <p className=" grid-det_link" >PROPERTY VALUE:</p>
+                    <br/>
+                    <p className="grid-det_link " >PROPERTY VALUE INCREMENT:</p>
+                    <br/>
+                    <p className=" grid-det_link "  >MINIMUM INVESTMENT:</p>
+                    <br/>
+                    <p className="grid-det_link "  >EXPECTED RETURN:</p>
+                    <br/>
+                    <p className=" grid-det_link " >FUND SIZE:</p>
+                    <br/>
+                    <p className=" grid-det_link" >DURATION OF INVESTMENT:</p> 
+                      
+                    
+                    </div>
+                    </a>
+                
+                    
+                    {/*<div className="grid-det-item">
                       <a href="portfolio-single.html" className=" grid-det_link">New Acropolis Museum<i className="fal fa-long-arrow-right" /></a>
                     </div>
+                  */}
                   </div>
-                </div>
-                <div className="pr-bg" />
+                  
+                  </div>
+                      <div className="pr-bg" />
               </div>
               {/* gallery-item end*/}
               {/* gallery-item*/}

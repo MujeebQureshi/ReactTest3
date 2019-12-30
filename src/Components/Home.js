@@ -78,8 +78,8 @@ class Home extends React.Component {
                         <div className="half-hero-wrap">
                           <div className="pr-bg"> </div>
                           {/*<div className="rotate_text">25 may 2018</div>*/}
-                          {/*<h1>Design of <br /> Classy and Stylish <br />  <span>House </span>Interior.</h1>*/}
-                          {/*<h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>*/}
+                          {<h1>One-stop-shop <br /> for property <br />management</h1>}
+                          {<h4>Square Foot Exchange is here to provide a solution to all your property related problems. Use our online portal to make your property investment easier. </h4>}
                           <div className="clearfix"> </div>
                           {/*<a id="videoLink" href="https://vimeo.com/34741214" className="image-popup half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>*/}
                         </div>
@@ -88,9 +88,9 @@ class Home extends React.Component {
                       {/* swiper-slide*/}
                       <div className="swiper-slide" onClick={this.rVideoClick}>
                         <div className="half-hero-wrap">
-                          <div className="rotate_text">25 may 2018</div>
-                          <h1>Trinity River <br /> Audubon <br /><span>Center</span> Interior</h1>
-                          <h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>
+                          {/*<div className="rotate_text">25 may 2018</div>*/}
+                          <h1>Our<br />Concept<br /></h1>
+                          <h4>Here’s an introductory video to help you<br/> understand what we can do for you! </h4>
                           <div className="clearfix" />
                           <a id="videoLink" href="https://www.youtube.com/watch?v=MoPBAjK6_Ig" className="image-popup half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
                         </div>
@@ -99,9 +99,9 @@ class Home extends React.Component {
                       {/* swiper-slide*/}
                       <div className="swiper-slide">
                         <div className="half-hero-wrap">
-                          <div className="rotate_text">25 may 2018</div>
-                          <h1>Design  and  <br />renovation <br />   of <span>  Flat</span> in Oslo</h1>
-                          <h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>
+                         {/*} <div className="rotate_text">25 may 2018</div> */}
+                          <h1>How <br />it works?<br /></h1>
+                          {/*<h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>*/}
                           <div className="clearfix" />
                           <a href="portfolio-single.html" className="half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
                         </div>
@@ -110,9 +110,9 @@ class Home extends React.Component {
                       {/* swiper-slide*/}
                       <div className="swiper-slide">
                         <div className="half-hero-wrap">
-                          <div className="rotate_text">25 may 2018</div>
-                          <h1>Private    and <br /> Stylish <br />  <span>residence</span> in Rome.</h1>
-                          <h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>
+                          {/*<div className="rotate_text">25 may 2018</div>*/}
+                          <h1>Value <br />Estimation<br /></h1>
+                          <h4>Compared with mutual funds, see how property investment has offered greater returns to its investors!</h4>
                           <div className="clearfix" />
                           <a href="portfolio-single.html" className="half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
                         </div>
@@ -154,7 +154,7 @@ class Home extends React.Component {
                     {/* swiper-slide end*/}
                     {/* swiper-slide*/}
                     <div className="swiper-slide">
-                      <div className="bg" data-bg="images/all/iconposter.png" />
+                      <div className="bg" data-bg="images/all/iconposter.png" style={{left:'0%', width:'100%'}} />
                       {/* <div class="overlay"></div> */}
                     </div>
                     {/* swiper-slide end*/}   
