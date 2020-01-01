@@ -34,9 +34,9 @@ class Services extends React.Component {
             </div>
             {/*fixed-column-wrap_title*/}
             <div className="fixed-column-wrap_title first-tile_load">
-              <h2>Our<br /> Services</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
-            </div>
+              <h2>How it<br /> Works?</h2>
+              
+               </div>
             {/*fixed-column-wrap_title end*/}
             <div className="fixed-column-dec" />
           </div>
@@ -58,13 +58,13 @@ class Services extends React.Component {
               <div className="container">
                 <div className="split-sceen-content_title fl-wrap">
                   <div className="pr-bg pr-bg-white" />
-                  <h3>Architecture</h3>
+                  <h3>How it works?</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
                 </div>
                 <div className="column-wrap-content fl-wrap">
                   <div className="column-wrap-media fl-wrap">
                     <div className="pr-bg pr-bg-white" />
-                    <img src="images/all/6.jpg" className="respimg" alt="" />
+                    <img src="images/all/iconposter.png" className="respimg" alt="" />
                     {/*<div className="cont-det-wrap dark-gold">
                       <div className="pr-bg pr-bg-white" />
                       <ul>

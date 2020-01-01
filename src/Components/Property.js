@@ -1,22 +1,35 @@
 import React from 'react';
 import Footer from './Footer';
 import { Helmet } from 'react-helmet';
-//import InputRange from 'react-input-range';
-//import  'react-input-range/lib/css/index.css';
 import Slider from 'react-rangeslider'
 import Swal from 'sweetalert2';
-// To include the default styles
 import 'react-rangeslider/lib/index.css'
+import config from '../config.json';
+
 class Property extends React.Component {
 	componentDidMount () {
-
+        
     }
     constructor(props){
         super(props);
         this.state = {
+          //  PropertyDetail: JSON.parse(localStorage.getItem('PropertyDetail')),
             value:10
           };
+          console.log(this.state.PropertyDetail)
     }
+    
+	rModalLogin=() =>{
+		console.log('here in react onclick')
+		//console.log(this.state);
+		window.ModalLogin(this, config);
+    }
+    
+	rModalSignUp =() =>{
+		window.ModalSignUp();
+	}
+	
+
     handleChange = value => {
         this.setState({
           value: value
@@ -62,7 +75,7 @@ class Property extends React.Component {
                                 <div className="row">
                                     <div className="col-md-5">
                                         <div className="pr-bg"></div>
-                                        <h2><br/>Property Title </h2>
+                                        <h2><br/>Property Title</h2>
                                     </div>
                                     <div className="col-md-4 first-tile_load">
                                         <span className="flat-project_title_dec color-bg"></span>
@@ -73,9 +86,10 @@ class Property extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        
+				  
                         {/* flat-project_title end*/}
-                      
-				   {/* section*/}
+                         {/* section*/}
                         <section className="no-padding-bottom" id="sec2">
                             {/* container*/}
                             <div className="container">
@@ -101,6 +115,7 @@ class Property extends React.Component {
                                             <Slider
                                             min={10000}
                                             max={10000000}
+                                            //step
                                            // tooltip={false}
                                             value={this.state.value}
                                            // onChangeStart={this.handleChangeStart}
@@ -120,7 +135,7 @@ class Property extends React.Component {
                                                 </div>
                                                 <div className="row">
                                                     
-                                                <button className="customButton" onClick={this.TCmodal} style={{marginTop:'15px',marginBottom:'10px',fontSize:'13px', paddingTop:'8px',paddingBottom:'8px',paddingRight: '8px',paddingLeft:'8px'}}> Invest Now</button> 
+                                                <button className="customButton" /*onClick={this.TCmodal} */ onClick={this.rModalSignUp} style={{marginTop:'15px',marginBottom:'10px',fontSize:'13px', paddingTop:'8px',paddingBottom:'8px',paddingRight: '8px',paddingLeft:'8px'}}> Invest Now</button> 
                                             
                                                    
                                                 </div>
@@ -143,11 +158,14 @@ class Property extends React.Component {
                                                     <li className="selectedLava"><a href="#tab-1" data-tabnum="1"><span>01.</span>Details</a></li>
                                                     <li><a href="#tab-2" data-tabnum="2"><span>02.</span>Photos/Videos</a></li>
                                                     <li><a href="#tab-3" data-tabnum="3"><span>03.</span>Documents</a></li>
-                                                    <li><a href="#tab-3" data-tabnum="3"><span>04.</span>Map</a></li>
+                                                    <li><a href="#tab-3" data-tabnum="4"><span>04.</span>Map</a></li>
                                                 </ul>
                                                 {/* tab-content*/}
                                                 <div id="tab-1" className="tab-content">
-                                                    <h3 className="pr-subtitle"> Property Description</h3>
+                                                     <img style={{height:"25em", width: "62em"}} src="images/folio/8.jpg"   alt="" />
+                                                     
+                                                     
+                                                     <h3 className="pr-subtitle"> Property Description</h3>
                                                     <p>Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae.
                                                         Ut nec hinc dolor possim. An eros argumentum vel, elit diceret duo eu, quo et aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem, explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri choro pertinax indoctum ne, ad partiendo persecuti forensibus est.
                                                     </p>
@@ -173,11 +191,17 @@ class Property extends React.Component {
                                                 {/* tab-content end*/}
                                                 {/* tab-content*/}
                                                 <div id="tab-2" className="tab-content">
+
                                                     <h3 className="pr-subtitle"> Project Presentation.</h3>
                                                     <p>  An eros argumentum vel, elit diceret duo eu, quo et aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem, explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri choro pertinax indoctum ne, ad partiendo persecuti forensibus est.</p>
+                                                    
                                                     <div className="video-box fl-wrap">
                                                         <img src="images/all/7.jpg" className="respimg" alt=""/>
-                                                        <a className="video-box-btn image-popup" href="https://vimeo.com/34741214"><i className="fas fa-play"></i></a>
+                                                        <a className="video-box-btn image-popup" href="https://vimeo.com/34741214"><i className="fas fa-play" style={{color:"#1b628e"}}></i></a>
+                                                    </div>
+                                                    <div className="video-box fl-wrap">
+                                                        <img src="images/all/7.jpg" className="respimg" alt=""/>
+                                                        <a className="video-box-btn image-popup" href="https://vimeo.com/34741214"><i className="fas fa-play" style={{color:"#1b628e"}}></i></a>
                                                     </div>
                                                 </div>
                                                 {/* tab-content end*/}
@@ -210,7 +234,7 @@ class Property extends React.Component {
                                             {/* tabs-container end*/}
                                             <div className="clearfix"></div>
                                             <span className="dec-border fl-wrap"></span>
-                                           <div classsName="row">
+                                           <div className="row">
                                                 {/*<a href="#" className="pr-view" target="_blank">
                                                     Learn More <i className="fal fa-long-arrow-right"></i>
 

@@ -116,12 +116,8 @@ returns of the previous years’.
 </p>
 <br/>
 <br/>
-<h2 style={{color:'black', textAlign:'left'}}>***Disclaimer***</h2>
-<p>1 -  Projections about rates of return and profits are based on precise calculations but we do
-not guarantee returns for any investment.</p>
-<p>2 -  Square Foot Exchange is not liable for any third-party security breaches on our portal.</p>
- <p>3 -  The Website and the material and information contained here are available for use ‘as
-is’ and ‘as available’, with no warranties of any kind whatsoever.</p>                                                   </div>
+                                                  
+ </div>
                                                 </div>
                                             </div>
                                             

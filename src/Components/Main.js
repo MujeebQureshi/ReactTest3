@@ -15,13 +15,31 @@ class Main extends React.Component {
 		super();
 		this.state = {
 			UserToken : localStorage.getItem('UserToken'),
-			User : JSON.parse(localStorage.getItem('User'))
+      User : JSON.parse(localStorage.getItem('User')),
+      propertyList : JSON.parse(localStorage.getItem('propertyList'))
 		};
 	}
 	
 	componentDidMount(){
 		//console.log(config.apiUrl);
-		//console.log(config.obtknfs);
+    //console.log(config.obtknfs);
+    if(!this.state.propertyList){
+      let AppConfig=config
+      console.log("did mount")
+      let myres=""
+      let data="{PropertyID: 101}"
+      let Method="PropertyModuleEP.GetTop4"
+      window.Services(AppConfig.apiUrl,Method, data).done( (response)=>{
+        console.log((response));
+        myres = JSON.parse(response);
+        if(myres.ResponseCode === 200){
+          localStorage.setItem("propertyList" , JSON.stringify(myres.ResponseResult))
+          this.setState({propertyList : myres.ResponseResult},()=>{
+            console.log(this.state.propertyList)
+          })
+        }
+      })
+    }
 	}
 	
 	rModalLogin=() =>{
@@ -44,7 +62,7 @@ class Main extends React.Component {
 		<div id="main">
         {/* header start  */}
         <header className="main-header">
-          <a href="/home" className="header-logo"><img src="images/Square Foot Exchange Logo Design Revised-page-001.jpg" alt="" style={{marginTop: '7px'}} /></a>
+          <a href="/home" className="header-logo"><img src="images/Square Foot Exchange Logo Design Revised-page-001.jpg" alt="" style={{marginTop: '7px', marginLeft: '2px'}} /></a>
 		  
           <div className="loginDiv">
 		  {
@@ -77,8 +95,8 @@ class Main extends React.Component {
           {/*  navigation */} 
           <div className="header-contacts" >
             <ul>
-              <li><span style={{fontSize:12}}> Call </span> <a  style={{fontSize:12}} href="#">+X(XXX)XXXXXXXX</a></li>
-              <li><span style={{fontSize:12}}> Write </span> <a style={{fontSize:12}} href="#">info@your-domain.com</a></li>
+              <li><span style={{fontSize:16, fontWeight:"bold"}}> Call </span> <a  style={{fontSize:16 ,fontWeight:"bold"}} href="#">+X(XXX)XXXXXXXX</a></li>
+              <li><span style={{fontSize:16, fontWeight:"bold"}}> Write </span> <a style={{fontSize:16 , fontWeight: "bold"}} href="#">info@your-domain.com</a></li>
             </ul>
           </div>
           {/* navigation  end */}            

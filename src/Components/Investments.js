@@ -7,47 +7,28 @@ class Investments extends React.Component {
   constructor(){
     super();
     this.state={
-      propertyList: []
+      propertyList: JSON.parse(localStorage.getItem('propertyList')),
+      
     }
   }
-
-  componentDidMount () {
-    console.log("did mount")
-    //this.setState({propertyList:this.rloadProperty(this)})
-    var res=this.rloadProperty(this)
-    console.log("res did mount: "+this.rloadProperty(this))
-    //console.log("prop from did mount:"+ this.state.propertyList)
-	}
  
-    rloadProperty=(comp)=>{
-      console.log("LOAD PROPERTY :")
-      var AppConfig=config;
-      console.log(AppConfig)
-      var myres=""
-      var data="{PropertyID: 101}"
-      var  Method="PropertyModuleEP.GetTop4"
-      window.Services(AppConfig.apiUrl,Method, data).done( (response)=>{
-        
-        console.log("res:" +(response));
-         myres=JSON.parse(response);
-       // response.tryGetValue("ResponseResult", out myres);
-        console.log("result: "+myres.ResponseResult[0].PropertyID)
-      // return myres.ResponseResult[0].PropertyID
-        // comp.setState({propertyList:myres});
-        //console.log("Propertylist state:"+this.state.propertyList)
-      })
-
-      console.log("prop from load:"+ myres.ResponseResult)
-      return myres.ResponseResult
-
-    }  
+  componentDidMount () {
+   
+ //   console.log("res did mount: "+this.rloadProperty(this))
+ 
+	}
+ /* handleClick=(property)=>{
+    console.log("func:"+property)
+    localStorage.setItem("PropertyDetail",property)
+  }*/
     
 	rInvestmentFilter(data){
 		window.InvestmentFilter(data,true)
 	}
-	
+   
   render() {
     console.log("render");
+   
     return (
       
       
@@ -70,7 +51,7 @@ class Investments extends React.Component {
               </div>
             </div>
             <div className="bg investmentFixedColI" data-bg="images/bg/8.jpg" />
-            <div class="overlay"></div>
+            <div className="overlay"></div>
             <div className="progress-bar-wrap bot-element">
               <div className="progress-bar" />
             </div>
@@ -113,25 +94,27 @@ class Investments extends React.Component {
             <div className="lprojects pprojects" style={{fontSize: '30px', color: '#1B628E', textAlign: 'left', paddingLeft: '15px'}}><h3>Land Projects</h3></div>
             <div className="gallery-items min-pad   two-column fl-wrap">
               {/* gallery-item*/}
-              <div className="gallery-item land  ">
+            
+              {	this.state.propertyList.map((property, index)=> {
+                if(index<4){
+    	return (
+				<div className="gallery-item land  " key={index}>
                 {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
                 <div className="grid-item-holder">
-                  <img src="images/folio/4.jpg" alt="" />
+                  <img src={"images/folio/"+`${index+1}`+".jpg" }alt="" />
                  
                   <div className="grid-det" >
                   <a className="a1" href='/property'>   
                     <div className="grid-det_category">
-                      <p className=" grid-det_link" >PROPERTY VALUE:</p>
+                      <p className=" grid-det_link" >PROPERTY VALUE : PKR {property.PropertyPrice} </p>
                     <br/>
-                    <p className="grid-det_link " >PROPERTY VALUE INCREMENT:</p>
+                    
+                    <p className=" grid-det_link "  >MINIMUM INVESTMENT: PKR {property.MinimumInvestmentAmount}</p>
                     <br/>
-                    <p className=" grid-det_link "  >MINIMUM INVESTMENT:</p>
+                    <p className="grid-det_link "  >EXPECTED RETURN: 10 % </p>
                     <br/>
-                    <p className="grid-det_link "  >EXPECTED RETURN:</p>
-                    <br/>
-                    <p className=" grid-det_link " >FUND SIZE:</p>
-                    <br/>
-                    <p className=" grid-det_link" >DURATION OF INVESTMENT:</p> 
+                    
+                    <p className=" grid-det_link" >DURATION OF INVESTMENT: {property.MinimumInvestPeriod} years</p> 
                       
                     
                     </div>
@@ -146,177 +129,112 @@ class Investments extends React.Component {
                   
                   </div>
                       <div className="pr-bg" />
-              </div>
+				</div>
+	
+		);}
+	})
+  
+  }
               {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item land">
-                {/*<div style="font-size: 30px; color: white;"><h3>Rental</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/5.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">West 57th Street <i className="fal fa-long-arrow-right" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item land  ">
-                {/*<div style="font-size: 30px; color: white;"><h3>Development</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/6.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Petronas Tower<i className="fal fa-long-arrow-right" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item land">
-                {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/7.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">One World Trade Center <i className="fal fa-long-arrow-right" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
+              
+             
+
+
+          
               {/* gallery-item*/}
             </div>
             <div className="dprojects pprojects" style={{fontSize: '30px', color: '#1B628E', textAlign: 'left', paddingLeft: '15px'}}><h3>Development Projects</h3></div>
             <div className="gallery-items min-pad   two-column fl-wrap">
-              <div className="gallery-item development">
+            {	this.state.propertyList.map((property, index)=> {
+                if(index>=4 && index<8) {
+    	return (
+				<div className="gallery-item development  " key={index}>
                 {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
                 <div className="grid-item-holder">
-                  <img src="images/folio/3.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Spire Edge <i className="fal fa-long-arrow-right" /></a>
+                  <img src={"images/folio/"+`${index+1}`+".jpg" } alt="" />
+                 
+                  <div className="grid-det" >
+                  <a className="a1" href='/property' /* onClick={this.handleClick(property)} */ >   
+                    <div className="grid-det_category">
+                      <p className=" grid-det_link" >PROPERTY VALUE : PKR {property.PropertyPrice} </p>
+                   
+                    <br/>
+                    <p className=" grid-det_link "  >MINIMUM INVESTMENT: PKR {property.MinimumInvestmentAmount}</p>
+                    <br/>
+                    <p className="grid-det_link "  >EXPECTED RETURN: 10 % </p>
+                    <br/>
+                    <p className=" grid-det_link" >DURATION OF INVESTMENT: {property.MinimumInvestPeriod} years</p> 
+                      
+                    
                     </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item development">
-                {/*<div style="font-size: 30px; color: white;"><h3>Development</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/9.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">White Walls <i className="fal fa-long-arrow-right" /></a>
+                    </a>
+                
+                    
+                    {/*<div className="grid-det-item">
+                      <a href="portfolio-single.html" className=" grid-det_link">New Acropolis Museum<i className="fal fa-long-arrow-right" /></a>
                     </div>
+                  */}
                   </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item development ">
-                {/*<div style="font-size: 30px; color: white;"><h3>Rental</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/10.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Big House<i className="fal fa-long-arrow-right" /></a>
-                    </div>
+                  
                   </div>
-                </div>
-                <div className="pr-bg" />
+                      <div className="pr-bg" />
+				</div>
+	
+		);}
+	})
+  
+  }
+               ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+               {/* gallery-item*/}
+              
+              
+              
               </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item development">
-                {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/13.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Pen Tower <i className="fal fa-long-arrow-right" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-            </div>
             {/* gallery-item end*/}
             {/* gallery-item*/}
             <div className="rprojects pprojects" style={{fontSize: '30px', color: '#1B628E', textAlign: 'left', paddingLeft: '15px'}}><h3>Rental Projects</h3></div>
             <div className="gallery-items min-pad   two-column fl-wrap">
-              <div className="gallery-item rental">
-                {/*<div style="font-size: 30px; color: white;"><h3>Development</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/15.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Wood River Ships Center <i className="fal fa-long-arrow-right" /></a>
-                    </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              <div className="gallery-item rental">
+            {	this.state.propertyList.map((property, index)=> {
+                if(index>=8 && index<12) {
+    	return (
+				<div className="gallery-item development  " key={index}>
                 {/*<div style="font-size: 30px; color: white;"><h3>Land</h3></div>*/}
                 <div className="grid-item-holder">
-                  <img src="images/folio/1.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Norway House <i className="fal fa-long-arrow-right" /></a>
+                  <img src={"images/folio/"+`${index+1}`+".jpg" }alt="" />
+                 
+                  <div className="grid-det" >
+                  <a className="a1" href='/property'>   
+                    <div className="grid-det_category">
+                      <p className=" grid-det_link" >PROPERTY VALUE : PKR {property.PropertyPrice} </p>
+                    <br/>
+                  
+                    <p className=" grid-det_link "  >MINIMUM INVESTMENT: PKR {property.MinimumInvestmentAmount}</p>
+                    <br/>
+                    <p className="grid-det_link "  >EXPECTED  RENTAL RETURN: 10 % </p>
+                    <br/>
+                    
+                    <p className=" grid-det_link" >DURATION OF INVESTMENT: {property.MinimumInvestPeriod} years</p> 
+                      
+                    
                     </div>
-                  </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item rental">
-                {/*<div style="font-size: 30px; color: white;"><h3>Rental</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/2.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Theatre de Stoep <i className="fal fa-long-arrow-right" /></a>
+                    </a>
+                
+                    
+                    {/*<div className="grid-det-item">
+                      <a href="portfolio-single.html" className=" grid-det_link">New Acropolis Museum<i className="fal fa-long-arrow-right" /></a>
                     </div>
+                  */}
                   </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/}
-              {/* gallery-item*/}
-              <div className="gallery-item  rental">
-                {/*<div style="font-size: 30px; color: white;"><h3>Development</h3></div>*/}
-                <div className="grid-item-holder">
-                  <img src="images/folio/8.jpg" alt="" />
-                  <div className="grid-det">
-                    <div className="grid-det_category"><a href="#">Architecture</a> <a href="#">Design</a></div>
-                    <div className="grid-det-item">
-                      <a href="portfolio-single.html" className=" grid-det_link">Trinity River Audubon Centre<i className="fal fa-long-arrow-right" /></a>
-                    </div>
+                  
                   </div>
-                </div>
-                <div className="pr-bg" />
-              </div>
-              {/* gallery-item end*/} 
+                      <div className="pr-bg" />
+				</div>
+	
+		);}
+	})
+  
+  }
+ 
             </div>								
           </div>
           {/* portfolio end */}

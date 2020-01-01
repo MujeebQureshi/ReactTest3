@@ -19,8 +19,14 @@ class Footer extends React.Component {
                     <img src="images/logo.png" alt="" />
                   </div>
                   <div className="footer_text  footer-box fl-wrap">
-                    <p>Our team takes over everything, from an idea and concept development to realization. We believe in traditions and incorporate them within our innovations.Client is the soul of the project.</p>
-                  </div>
+                  <h2 style={{color:'black', textAlign:'left'}}>Disclaimers:</h2>
+<p>*  Projections about rates of return and profits are based on precise calculations but we do
+not guarantee returns for any investment.</p>
+<p>**   Square Foot Exchange is not liable for any third-party security breaches on our portal.</p>
+ <p>***   The Website and the material and information contained here are available for use ‘as
+is’ and ‘as available’, with no warranties of any kind whatsoever.</p>        
+                   
+                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="footer-header fl-wrap"><span>01.</span> Contacts</div>

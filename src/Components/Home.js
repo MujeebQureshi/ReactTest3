@@ -90,9 +90,9 @@ class Home extends React.Component {
                         <div className="half-hero-wrap">
                           {/*<div className="rotate_text">25 may 2018</div>*/}
                           <h1>Our<br />Concept<br /></h1>
-                          <h4>Here’s an introductory video to help you<br/> understand what we can do for you! </h4>
+                          <h4>Here’s an introductory video to <br/> help  you understand what <br/>we can do for you! </h4>
                           <div className="clearfix" />
-                          <a id="videoLink" href="https://www.youtube.com/watch?v=MoPBAjK6_Ig" className="image-popup half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
+                          <a id="videoLink" href="https://www.youtube.com/watch?v=Rc8BL3pX9Vg" className="image-popup half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
                         </div>
                       </div>
                       {/* swiper-slide end*/}
@@ -103,7 +103,7 @@ class Home extends React.Component {
                           <h1>How <br />it works?<br /></h1>
                           {/*<h4>Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. </h4>*/}
                           <div className="clearfix" />
-                          <a href="portfolio-single.html" className="half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
+                          <a href="/services" className="customButton" style={{padding: "12px 22px", marginLeft:"-125px"}}>View More </a>
                         </div>
                       </div>
                       {/* swiper-slide end*/}
@@ -112,9 +112,10 @@ class Home extends React.Component {
                         <div className="half-hero-wrap">
                           {/*<div className="rotate_text">25 may 2018</div>*/}
                           <h1>Value <br />Estimation<br /></h1>
-                          <h4>Compared with mutual funds, see how property investment has offered greater returns to its investors!</h4>
+                          <h4>Compared with mutual funds, see how property investment has offered greater returns to its investors!<br/></h4>
+                          <br/>
                           <div className="clearfix" />
-                          <a href="portfolio-single.html" className="half-hero-wrap_link ">View Project <i className="fal fa-long-arrow-right" /></a>
+                          <a href="/services" className="customButton" style={{padding: "12px 22px", marginLeft:"-60px", marginTop:"150px"}}>View More <i className="fal fa-long-arrow-right" /></a>
                         </div>
                       </div>
                       {/* swiper-slide end*/} 
@@ -147,8 +148,11 @@ class Home extends React.Component {
 					  <div className="bg" data-bg="images/all/arch.jpg" />
 					  <div className="video-box fl-wrap">
 					  <img src="images/all/arch.jpg" className="respimg" style={{height: '500px'}} alt="" />
-					  <a className="video-box-btn image-popup" href="https://www.youtube.com/watch?v=MoPBAjK6_Ig"><i className="fas fa-play" /></a>
-                      {/* <div class="overlay"></div> */}
+					  <a className="video-box-btn image-popup" href="https://www.youtube.com/watch?v=MoPBAjK6_Ig"><i className="fas fa-play" style={{color:'#1B628E'}} /></a>
+             
+          
+            
+                   {/* <div class="overlay"></div> */}
 					  </div>
                     </div>
                     {/* swiper-slide end*/}

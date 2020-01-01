@@ -1149,7 +1149,7 @@ nav.nav-inner {
 }
 .half-hero-wrap h4 {
     text-align: left;
-    font-size: 14px;
+    font-size: 17px;
     float: left;
 	max-width:450px;
     /* color: rgba(255, 255, 255, 0.71); */
@@ -2090,7 +2090,7 @@ section.hero-section .fs-canvas {
 	height: 6px;
 	border-radius: 25%;
 	animation-name: scroll;
-	animation-duration: 2.2s;
+	animation-duration: 2.2;
 	animation-timing-function: cubic-bezier(.15, .41, .69, .94);
 	animation-iteration-count: infinite;
 }
@@ -2111,7 +2111,7 @@ section.hero-section .fs-canvas {
 	top:50%;
 	margin-top:-3px;
 	animation-name: scroll2;
-	animation-duration: 2.2s;
+	animation-duration: 15s;
 	animation-timing-function: cubic-bezier(.15, .41, .69, .94);
 	animation-iteration-count: infinite;
 }
@@ -2192,7 +2192,7 @@ section.hero-section .fs-canvas {
 	right:100%;
 	z-index:10;
 	overflow:hidden;
-	background:#999999ad;
+	background:#deac27;
 }
 .grid-item-holder:hover .grid-det  {
 	right:20px;
